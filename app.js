@@ -6,8 +6,7 @@ const app = express();
 const port = 3000;
 const markdown = require('markdown-it')({
   html: true,
-  linkify: true,
-  typographer: true
+  linkify: true
 });
 
 app.engine('html', mustache());
@@ -15,11 +14,8 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
 const formatFile = (req) => {
-  const directory = req.url;
-  const url = `content${directory}/index.md`;
-  const content = fs.readFileSync(url, 'utf8');
-  const html = markdown.render(content);
-  return html;
+  const content = fs.readFileSync(`content${req.url}/index.md`, 'utf8');
+  return markdown.render(content);
 };
 
 app.get('/about-page', (req, res) => {
@@ -37,8 +33,8 @@ app.get('/valves', (req, res) => {
 app.use((req, res) => {
   res.status(404).send({
     status: 404,
-    error: 'Something went wrong'
+    error: 'Error: something went wrong'
   });
 });
 
-app.listen(port, () => console.log('App listening on port 3000'));
+app.listen(port, () => console.log('App running on port 3000'));
