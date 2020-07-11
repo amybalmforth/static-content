@@ -4,6 +4,7 @@
   "description": "Static Content Challenge",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "npm test"
   },
   "repository": {
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/amybalmforth/static-content#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "markdown-it": "^11.0.0"
+    "markdown-it": "^11.0.0",
+    "mustache-express": "^1.3.0"
   }
 }

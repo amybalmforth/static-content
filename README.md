@@ -18,7 +18,7 @@ Your application may make use of open-source code libraries. It is entirely up t
 --------------------------------------------------------------------------------
  steps:
         - get param from route      DONE
-        - read equivalent .md file DONE
-        - return .md file in route
+        - read equivalent .md file  DONE
+        - return .md file in route  DONE
         - parse with markdown-it
         - output on template.html {{content}}
