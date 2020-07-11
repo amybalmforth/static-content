@@ -18,22 +18,14 @@ const formatFile = (req) => {
   return markdown.render(content);
 };
 
-app.get('/about-page', (req, res) => {
-  res.render('template.html', {"content": formatFile(req)});
-});
-
-app.get('/jobs', (req, res) => {
-  res.render('template.html', {"content": formatFile(req)});
-});
-
-app.get('/valves', (req, res) => {
+app.get(['/about-page', '/jobs', '/valves'], (req, res) => {
   res.render('template.html', {"content": formatFile(req)});
 });
 
 app.use((req, res) => {
   res.status(404).send({
     status: 404,
-    error: 'Error: something went wrong'
+    error: 'Error: Something went wrong'
   });
 });
 
