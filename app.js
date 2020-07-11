@@ -7,21 +7,26 @@ const markdown = require('markdown-it')();
 
 const result = markdown.render('# mark down it rules');
 
-app.get('/about-page', (req, res) => {
+const consumeFile = (req) => {
   let directory = req.url
   let url = `content${directory}/index.md`
-  fs.readFile(url, 'utf8', (err, data) => {
-    console.log(data)
-  })
-  res.send(result)
+  const content = fs.readFileSync(url, 'utf8');
+  return content;
+}
+
+app.get('/about-page', (req, res) => {
+  let output = consumeFile(req)
+  res.send(output)
 })
 
 app.get('/jobs', (req, res) => {
-  res.sendFile('template.html', { root: '.' })
+  let output = consumeFile(req)
+  res.send(output)
 })
 
 app.get('/valves', (req, res) => {
-  res.sendFile('template.html', { root: '.' })
+  let output = consumeFile(req)
+  res.send(output)
 })
 
 app.use((req, res) => {
