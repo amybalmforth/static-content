@@ -14,29 +14,24 @@ app.engine('html', mustache());
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
-const consumeFile = (req) => {
-  let directory = req.url;
-  let url = `content${directory}/index.md`;
+const formatFile = (req) => {
+  const directory = req.url;
+  const url = `content${directory}/index.md`;
   const content = fs.readFileSync(url, 'utf8');
-  return content;
+  const html = markdown.render(content);
+  return html;
 };
 
 app.get('/about-page', (req, res) => {
-  let output = consumeFile(req);
-  let html = markdown.render(output);
-  res.render('template.html', {"content": html});
+  res.render('template.html', {"content": formatFile(req)});
 });
 
 app.get('/jobs', (req, res) => {
-  let output = consumeFile(req);
-  let html = markdown.render(output);
-  res.render('template.html', {"content": html});
+  res.render('template.html', {"content": formatFile(req)});
 });
 
 app.get('/valves', (req, res) => {
-  let output = consumeFile(req);
-  let html = markdown.render(output);
-  res.render('template.html', {"content": html});
+  res.render('template.html', {"content": formatFile(req)});
 });
 
 app.use((req, res) => {
