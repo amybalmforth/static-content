@@ -1,0 +1,27 @@
+{
+  "name": "static-content-challenge",
+  "version": "1.0.0",
+  "description": "Static Content Challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amybalmforth/static-content.git"
+  },
+  "keywords": [
+    "static",
+    "content",
+    "challenge"
+  ],
+  "author": "Amy Balmforth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amybalmforth/static-content/issues"
+  },
+  "homepage": "https://github.com/amybalmforth/static-content#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
