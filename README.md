@@ -15,10 +15,3 @@ The application should be shipped with three tests:
 * one that verifies that requests to URLs that do not match content folders return a 404 HTTP status code
 
 Your application may make use of open-source code libraries. It is entirely up to you how the application performs the challenge.
---------------------------------------------------------------------------------
- steps:
-        - get param from route      DONE
-        - read equivalent .md file  DONE
-        - return .md file in route  DONE
-        - parse with markdown-it
-        - output on template.html {{content}}

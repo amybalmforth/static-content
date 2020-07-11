@@ -4,8 +4,11 @@ const mustache = require('mustache-express');
 const path = require('path');
 const app = express();
 const port = 3000;
-const markdown = require('markdown-it')();
-
+const markdown = require('markdown-it')({
+  html: true,
+  linkify: true,
+  typographer: true
+});
 
 app.engine('html', mustache());
 app.set('view engine', 'html');
@@ -16,21 +19,24 @@ const consumeFile = (req) => {
   let url = `content${directory}/index.md`;
   const content = fs.readFileSync(url, 'utf8');
   return content;
-}
+};
 
 app.get('/about-page', (req, res) => {
   let output = consumeFile(req);
-  res.render('template.html', {"content": output});
+  let html = markdown.render(output);
+  res.render('template.html', {"content": html});
 });
 
 app.get('/jobs', (req, res) => {
   let output = consumeFile(req);
-  res.render('template.html', {"content": output});
+  let html = markdown.render(output);
+  res.render('template.html', {"content": html});
 });
 
 app.get('/valves', (req, res) => {
   let output = consumeFile(req);
-  res.render('template.html', {"content": output});
+  let html = markdown.render(output);
+  res.render('template.html', {"content": html});
 });
 
 app.use((req, res) => {
