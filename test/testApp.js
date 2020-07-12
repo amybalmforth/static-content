@@ -11,7 +11,7 @@ describe('GET /about-page', () => {
       .request(app)
       .get('/about-page')
       .end((err, res) => {
-        expect(res).to.have.status(200);
+        expect(res).to.have.status(200, done);
         expect(res.text).to.include('<h1>This is the About page</h1>');
         done();
       });
