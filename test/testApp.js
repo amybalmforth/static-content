@@ -15,6 +15,15 @@ describe('GET /about-page', () => {
         done();
       });
   });
+  it('should include correct html', done => {
+    chai
+      .request(app)
+      .get('/about-page')
+      .end((err, res) => {
+        expect(res.text).to.include('<h1>This is the About page</h1>');
+        done();
+      });
+  });
 });
 
 describe('GET /jobs', () => {
@@ -27,6 +36,15 @@ describe('GET /jobs', () => {
         done();
       });
   });
+  it('should include correct html', done => {
+    chai
+      .request(app)
+      .get('/jobs')
+      .end((err, res) => {
+        expect(res.text).to.include('<h1>Jobs at Acme Co.</h1>');
+        done();
+      });
+  });
 });
 
 describe('GET /valves', () => {
@@ -36,6 +54,27 @@ describe('GET /valves', () => {
       .get('/valves')
       .end((err, res) => {
         expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it('should include correct html', done => {
+    chai
+      .request(app)
+      .get('/valves')
+      .end((err, res) => {
+        expect(res.text).to.include('<h1>Valves</h1>');
+        done();
+      });
+  });
+});
+
+describe('GET /', () => {
+  it('should return 404 response', done => {
+    chai
+      .request(app)
+      .get('/')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
         done();
       });
   });
