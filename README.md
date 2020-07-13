@@ -33,8 +33,8 @@ npm test
 
 After consideration, I decided to break the problem down into steps which I'd tackle one by one:
 
-1. Set up routes for /about-page, /jobs and /valves
-2. Work out how to serve the corresponding content markdown files on each route (e.g. content/about-page/index.md served on the route /about-page)
+1. Set up routes for `/about-page`, `/jobs` and `/valves`
+2. Work out how to serve the corresponding content markdown files on each route (e.g. content/about-page/index.md served on the route `/about-page`)
 3. Find a way to copy the URL from the route and convert this to a path which points to the corresponding content file
 4. Work out how to serve template.html on each route
 5. Find a way to convert markdown text to HTML text with tags
